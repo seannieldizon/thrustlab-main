@@ -1,0 +1,124 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Assembled Exhaust Section (Not Colored)",
+      "rotation": [
+        0.70710688829422,
+        0,
+        0,
+        0.7071066498756409
+      ],
+      "scale": [
+        0.20000000298023224,
+        0.20000003278255463,
+        0.20000003278255463
+      ],
+      "translation": [
+        67.39167785644531,
+        0.0000029336681564018363,
+        -4.629024505615234
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material.008",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.17143994569778442,
+          0.17144131660461426,
+          0.1714412122964859,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Assembled Exhaust Section (Not Colored)",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 241542,
+      "max": [
+        85.25698852539062,
+        54.277645111083984,
+        65.80252838134766
+      ],
+      "min": [
+        -26.742996215820312,
+        -47.37735366821289,
+        -65.59225463867188
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 241542,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5125,
+      "count": 311172,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 964952,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "Exhaust Section (Gray)_data.bin",
+      "byteLength": 964952
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+@import 'tailwindcss';
+
+/* Font Families */
+:root {
+	/* Poppins Black for headings */
+	--font-heading: 'Poppins', sans-serif;
+	/* Inter Regular for body text */
+	--font-body: 'Inter', sans-serif;
+	/* Concert One for special elements */
+	--font-special: 'Concert One', cursive;
+}
+
+.font-special {
+	font-family: var(--font-special) !important;
+}
+
+:root {
+	/* Background Colors - From Color Palette */
+	--bg-primary: #223A5E;
+	/* Deep Blue/Navy */
+	--bg-secondary: #D75E2E;
+	/* Orange */
+	--bg-tertiary: #74B3D4;
+	/* Light Blue */
+	--bg-quaternary: #9B8AA4;
+	/* Purple/Mauve */
+
+	/* Font Colors - From Color Palette */
+	--font-primary: #1E3A5F;
+	/* Dark Navy Blue */
+	--font-secondary: #FFFFFF;
+	/* White */
+	--font-accent-cyan: #00CED1;
+	/* Cyan */
+	--font-accent-yellow: #FFE66D;
+	/* Yellow */
+	--font-accent-green: #4CAF50;
+	/* Green */
+
+	/* UI Element Colors - From "Others" Palette */
+	--ui-dark-teal: #0A2F35;
+	/* Dark Teal */
+	--ui-slate: #657786;
+	/* Slate Gray */
+	--ui-navy: #1C2E3A;
+	/* Navy */
+	--ui-deep-navy: #243447;
+	/* Deep Navy */
+	--ui-yellow: #FFD966;
+	/* Yellow */
+	--ui-light-blue: #87CEEB;
+	/* Light Blue */
+
+	/* Zone-Specific Accent Colors */
+	--hangar-accent: #1b3558;
+	--hangar-accent-rgb: 27, 53, 88;
+	/* Hangar Zone Navy Blue */
+	--turbofan-accent: #ce5508;
+	--turbofan-accent-rgb: 206, 85, 8;
+	/* Turbofan Engine Orange */
+	--overhaul-accent: #5da8cb;
+	--overhaul-accent-rgb: 93, 168, 203;
+	/* Overhaul Station Light Blue */
+	--testbay-accent: #8461f4;
+	--testbay-accent-rgb: 132, 97, 244;
+	/* Test Bay Purple */
+
+	/* Zone Gradients (90 degrees, moving horizontally) */
+	--hangar-gradient: linear-gradient(90deg, #004aad 0%, #5de0e6 50%, #004aad 100%);
+	--turbofan-gradient: linear-gradient(90deg, #ce5508 0%, #ff8c42 50%, #ce5508 100%);
+	--overhaul-gradient: linear-gradient(90deg, #FFB000 0%, #FFD966 50%, #FFB000 100%);
+	--testbay-gradient: linear-gradient(90deg, #8461f4 0%, #81d8e5 50%, #8461f4 100%);
+	--logo-gradient: linear-gradient(90deg, #FFD966 0%, #00CED1 50%, #FFD966 100%);
+}
+
+/* Apply default font family and reduce base scaling */
+html {
+	font-size: 14px;
+	/* Reduces base size from 16px to 14px (87.5%) */
+	background: linear-gradient(180deg, #1b3558 0%, #2a4870 100%);
+	/* Prevent white flash during page load */
+}
+
+body {
+	font-family: var(--font-body);
+	color: var(--font-primary);
+	background: linear-gradient(180deg, #1b3558 0%, #2a4870 100%);
+	/* Prevent white flash during navigation */
+	min-height: 100vh;
+	cursor: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%2387CEEB' stroke='%23000' stroke-width='2' stroke-linejoin='round' d='M10 11V8.99c0-.88.59-1.64 1.44-1.86h.05A1.99 1.99 0 0 1 14 9.05V12v-2c0-.88.6-1.65 1.46-1.87h.05A1.98 1.98 0 0 1 18 10.06V13v-1.94a2 2 0 0 1 1.51-1.94h0A2 2 0 0 1 22 11.06V14c0 .6-.08 1.27-.21 1.97a7.96 7.96 0 0 1-7.55 6.48 54.98 54.98 0 0 1-4.48 0 7.96 7.96 0 0 1-7.55-6.48C2.08 15.27 2 14.59 2 14v-1.49c0-1.11.9-2.01 2.01-2.01h0a2 2 0 0 1 2.01 2.03l-.01.97v-10c0-1.1.9-2 2-2h0a2 2 0 0 1 2 2V11Z'/%3E%3C/svg%3E") 12 12, auto !important;
+}
+
+/* Dashboard must remain scrollable even if other pages/components lock scroll. */
+html.dashboard-page,
+body.dashboard-page {
+	overflow-y: auto !important;
+}
+
+/* Pointer cursor for interactive elements */
+*,
+*::before,
+*::after {
+	cursor: inherit;
+}
+
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+.module-card,
+.cta-button,
+.researcher,
+.zone-card,
+.feature-card,
+.test-card,
+.option-item,
+.zoom-icon {
+	cursor: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFD966' stroke='%23000' stroke-width='2' stroke-linejoin='round' d='M10 11V8.99c0-.88.59-1.64 1.44-1.86h.05A1.99 1.99 0 0 1 14 9.05V12v-2c0-.88.6-1.65 1.46-1.87h.05A1.98 1.98 0 0 1 18 10.06V13v-1.94a2 2 0 0 1 1.51-1.94h0A2 2 0 0 1 22 11.06V14c0 .6-.08 1.27-.21 1.97a7.96 7.96 0 0 1-7.55 6.48 54.98 54.98 0 0 1-4.48 0 7.96 7.96 0 0 1-7.55-6.48C2.08 15.27 2 14.59 2 14v-1.49c0-1.11.9-2.01 2.01-2.01h0a2 2 0 0 1 2.01 2.03l-.01.97v-10c0-1.1.9-2 2-2h0a2 2 0 0 1 2 2V11Z'/%3E%3C/svg%3E") 12 12, pointer !important;
+}
+
+/* Mobile/touch devices: use the system cursor.
+   Custom cursor URLs are desktop-only and can degrade touch UX. */
+@media (pointer: coarse) {
+	body {
+		cursor: auto !important;
+	}
+
+	a,
+	button,
+	[role="button"],
+	input[type="submit"],
+	input[type="button"],
+	.module-card,
+	.cta-button,
+	.researcher,
+	.zone-card,
+	.feature-card,
+	.test-card,
+	.option-item,
+	.zoom-icon {
+		cursor: auto !important;
+	}
+}
+
+/* Heading styles with Poppins Black */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-heading);
+	font-weight: 900;
+}
+
+/* Legacy learning label shimmer class; keep available as a specific utility */
+.learning-label {
+	background: var(--learning-label-gradient);
+	background-size: 250% 100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color: transparent;
+	animation: learning-label-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes learning-label-shimmer {
+
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+}
+
+/* Global gradient animation used for moving text gradients across pages */
+@keyframes gradient-flash {
+
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+
+	25% {
+		background-position: 50% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	75% {
+		background-position: 50% 50%;
+	}
+}
+
+/* Default gradient animation timing and default gradient style used across pages */
+:root {
+	--gradient-duration: 3.5s;
+}
+
+/* Reusable gradient class applied to titles and headings: opt-in only via `.gradient-animated` */
+.gradient-animated {
+	background: var(--active-gradient, var(--hangar-gradient));
+	background-size: 200% 100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	animation: gradient-flash var(--gradient-duration) ease-in-out infinite;
+	filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.9));
+}
+
+.background-gradient-animated {
+	background: var(--active-gradient, var(--hangar-gradient));
+	background-size: 200% 100%;
+	animation: gradient-flash var(--gradient-duration) ease-in-out infinite;
+}
+
+/* Zone-specific body classes that set the navbar accent (and its rgb) for top-level navbar */
+body.zone-hangar {
+	--navbar-accent: var(--hangar-accent);
+	--navbar-accent-rgb: var(--hangar-accent-rgb);
+	--active-gradient: var(--hangar-gradient);
+}
+
+body.zone-turbofan {
+	--navbar-accent: var(--turbofan-accent);
+	--navbar-accent-rgb: var(--turbofan-accent-rgb);
+	--active-gradient: var(--turbofan-gradient);
+}
+
+body.zone-overhaul {
+	--navbar-accent: var(--overhaul-accent);
+	--navbar-accent-rgb: var(--overhaul-accent-rgb);
+	--active-gradient: var(--overhaul-gradient);
+}
+
+body.zone-testbay {
+	--navbar-accent: var(--testbay-accent);
+	--navbar-accent-rgb: var(--testbay-accent-rgb);
+	--active-gradient: var(--testbay-gradient);
+}
+
+/* Layout spacing tokens */
+:root {
+	/* Side padding for page containers (left/right) */
+	--container-side-padding: 2rem;
+	/* default padding for pages */
+	/* Card padding used for cards and containers */
+	--card-padding: 2.5rem;
+	--card-padding-mobile: 1.5rem;
+	/* Add common spacing tokens for consistent paddings across the site */
+	--spacing-xs: 0.5rem;
+	--spacing-sm: 1rem;
+	--spacing-md: 1.5rem;
+	--spacing-lg: 2rem;
+	--spacing-xl: 3rem;
+	--spacing-xxl: 4rem;
+}
+
+/* Smooth Page Transitions */
+@keyframes pageEnter {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pageExit {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+/* View Transitions API support for modern browsers */
+@supports (view-transition-name: none) {
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 0.6s;
+		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		mix-blend-mode: normal;
+	}
+
+	::view-transition-old(root) {
+		animation-name: fadeOut;
+	}
+
+	::view-transition-new(root) {
+		animation-name: fadeIn;
+		animation-delay: 0.2s;
+	}
+
+	/* Smooth sky background transitions */
+	.sky-background,
+	.sky-canvas,
+	.cloud-layer {
+		view-transition-name: sky-background;
+	}
+}
+
+/* Smooth transitions for all interactive elements */
+a,
+button,
+.module-card,
+.zone-card,
+.feature-card,
+.test-card,
+.cta-button {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent layout shift during transitions */
+main {
+	isolation: isolate;
+}
+
+/* Hardware acceleration for smooth animations */
+.sky-background,
+.page-content {
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+.transition-wrapper {
+	/* transform: translateZ(0); - REMOVED to fix position:fixed children */
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+/* Optimize repaints */
+.sky-canvas,
+.cloud-layer {
+	transform: translate3d(0, 0, 0);
+	will-change: transform, opacity;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none !important;
+	}
+}
+
+/* Custom Clip Path for Section Headers */
+.clip-path-custom {
+	clip-path: polygon(0 0, 88% 0, 96% 100%, 0% 100%);
+}
+
+/* Global Scroll Animations */
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(50px);
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	will-change: opacity, transform;
+}
+
+.animate-on-scroll.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.animate-delay-100 {
+	transition-delay: 100ms;
+}
+
+.animate-delay-200 {
+	transition-delay: 200ms;
+}
+
+.animate-delay-300 {
+	transition-delay: 300ms;
+}
+
+.animate-delay-400 {
+	transition-delay: 400ms;
+}
+
+.animate-delay-500 {
+	transition-delay: 500ms;
+}

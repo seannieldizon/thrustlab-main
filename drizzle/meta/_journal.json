@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1764586256725,
+      "tag": "0000_slim_bloodstorm",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1764611649007,
+      "tag": "0001_empty_siren",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767543114591,
+      "tag": "0002_dapper_scarlet_witch",
+      "breakpoints": true
+    }
+  ]
+}

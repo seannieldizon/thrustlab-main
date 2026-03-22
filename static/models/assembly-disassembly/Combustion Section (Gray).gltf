@@ -1,0 +1,124 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Combustion Section (Gray)",
+      "rotation": [
+        0.6156614422798157,
+        0,
+        0,
+        0.7880107760429382
+      ],
+      "scale": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224
+      ],
+      "translation": [
+        41.63501739501953,
+        -0.7267627716064453,
+        -5.565679550170898
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material.013",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.17143994569778442,
+          0.17144131660461426,
+          0.1714412122964859,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Combustion Section (Gray).001",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 602530,
+      "max": [
+        26.671464920043945,
+        19.346866607666016,
+        51.461116790771484
+      ],
+      "min": [
+        -27.6285343170166,
+        -32.01426696777344,
+        -50.93796920776367
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 602530,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5125,
+      "count": 882570,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2063144,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "Combustion Section (Gray)_data.bin",
+      "byteLength": 2063144
+    }
+  ]
+}

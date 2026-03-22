@@ -1,0 +1,124 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Assembled Turbine (Not Colored)",
+      "rotation": [
+        0.70710688829422,
+        0,
+        0,
+        0.7071066498756409
+      ],
+      "scale": [
+        0.20000000298023224,
+        0.20000003278255463,
+        0.20000003278255463
+      ],
+      "translation": [
+        55.70179748535156,
+        1.2551071643829346,
+        -2.7599637508392334
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material.006",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.17143994569778442,
+          0.17144131660461426,
+          0.1714412122964859,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Assembled Turbine (Not Colored)",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 3927318,
+      "max": [
+        43.514530181884766,
+        57.81545639038086,
+        72.27882385253906
+      ],
+      "min": [
+        -65.7486572265625,
+        -62.18889617919922,
+        -59.10107421875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3927318,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5125,
+      "count": 4806204,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 12907548,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "Turbine Section (Gray)_data.bin",
+      "byteLength": 12907548
+    }
+  ]
+}
