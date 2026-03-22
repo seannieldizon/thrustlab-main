@@ -2,14 +2,8 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateText } from 'ai';
-import { GEMINI_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { z } from 'zod';
-
-// Configure the Google AI provider with API key
-const google = createGoogleGenerativeAI({
-    apiKey: GEMINI_API_KEY
-});
-const model = google('gemini-2.5-flash');
 
 // Helper function to clean markdown code blocks from JSON responses
 function cleanJsonResponse(text: string): string {
@@ -39,6 +33,15 @@ const feedbackSchema = z.object({
 
 export const POST: RequestHandler = async ({ request }) => {
     try {
+        if (!env.GEMINI_API_KEY) {
+            return json({ error: 'GEMINI_API_KEY is not configured' }, { status: 500 });
+        }
+
+        const google = createGoogleGenerativeAI({
+            apiKey: env.GEMINI_API_KEY
+        });
+        const model = google('gemini-2.5-flash');
+
         const { questions } = await request.json();
 
         if (!questions || !Array.isArray(questions)) {
