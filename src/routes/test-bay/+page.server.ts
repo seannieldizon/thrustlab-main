@@ -7,11 +7,19 @@ export const load: PageServerLoad = async ({ locals: { safeGetSession } }) => {
     // Ensure user is logged in (optional, but good practice for test bay)
     const { session } = await safeGetSession();
 
-    // Fetch all modules
-    const allModules = await db.select().from(modules).orderBy(modules.moduleNo);
+    let allModules: Array<(typeof modules.$inferSelect)> = [];
+    let allQuestions: Array<(typeof questions.$inferSelect)> = [];
 
-    // Fetch all questions
-    const allQuestions = await db.select().from(questions);
+    try {
+        // Fetch all modules
+        allModules = await db.select().from(modules).orderBy(modules.moduleNo);
+
+        // Fetch all questions
+        allQuestions = await db.select().from(questions);
+    } catch (error) {
+        // Avoid blocking the whole page when DB schema/RLS is still being configured.
+        console.error('Test bay data load failed, returning empty state:', error);
+    }
 
     // Group questions by module
     const modulesWithQuestions = allModules.map(mod => {
