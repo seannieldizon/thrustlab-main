@@ -3,6 +3,7 @@ import postgres from 'postgres';
 import * as schema from '../src/lib/server/db/schema';
 import fs from 'fs';
 import path from 'path';
+import { eq } from 'drizzle-orm';
 
 // Load .env file
 const envPath = path.resolve(process.cwd(), '.env');
@@ -321,6 +322,9 @@ async function seed() {
             target: modules.moduleNo,
             set: { moduleName: mod.title }
         }).returning();
+
+        // Ensure deterministic seeding: replace existing questions for this module.
+        await db.delete(questions).where(eq(questions.moduleNo, insertedModule.moduleNo));
 
         // Insert questions
         for (const q of mod.questions) {
