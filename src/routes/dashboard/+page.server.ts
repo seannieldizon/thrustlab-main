@@ -18,16 +18,25 @@ export const load: PageServerLoad = async ({ locals: { safeGetSession } }) => {
         throw redirect(303, '/login');
     }
 
-    // Parallelize initial fetches
-    const [userProfileResult, userTests, userActivities] = await Promise.all([
-        db.select().from(userTable).where(eq(userTable.id, user.id)),
-        db.select().from(tests).where(eq(tests.userId, user.id)).orderBy(desc(tests.testDate)),
-        db
-            .select()
-            .from(activityScores)
-            .where(eq(activityScores.userId, user.id))
-            .orderBy(desc(activityScores.completedAt))
-    ]);
+    let userProfileResult: Array<(typeof userTable.$inferSelect)> = [];
+    let userTests: Array<(typeof tests.$inferSelect)> = [];
+    let userActivities: Array<(typeof activityScores.$inferSelect)> = [];
+
+    try {
+        // Parallelize initial fetches
+        [userProfileResult, userTests, userActivities] = await Promise.all([
+            db.select().from(userTable).where(eq(userTable.id, user.id)),
+            db.select().from(tests).where(eq(tests.userId, user.id)).orderBy(desc(tests.testDate)),
+            db
+                .select()
+                .from(activityScores)
+                .where(eq(activityScores.userId, user.id))
+                .orderBy(desc(activityScores.completedAt))
+        ]);
+    } catch (error) {
+        // Keep auth flow usable even when DB schema/RLS is still being configured.
+        console.error('Dashboard data load failed, falling back to empty state:', error);
+    }
 
     const dbUser = userProfileResult[0];
 
@@ -61,11 +70,15 @@ export const load: PageServerLoad = async ({ locals: { safeGetSession } }) => {
 
     let recentTestQuestions: any[] = [];
     if (recentTestIds.length > 0) {
-        // Optimized query using inArray
-        recentTestQuestions = await db
-            .select()
-            .from(testQuestions)
-            .where(inArray(testQuestions.testId, recentTestIds));
+        try {
+            // Optimized query using inArray
+            recentTestQuestions = await db
+                .select()
+                .from(testQuestions)
+                .where(inArray(testQuestions.testId, recentTestIds));
+        } catch (error) {
+            console.error('Dashboard recent questions load failed:', error);
+        }
     }
 
     // Calculate stats
